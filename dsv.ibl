@@ -1,0 +1,21 @@
+import pandas as pd
+import matplotlib.pyplot as plt 
+data={
+    'datejoined':['2020-01-15','2019-07-18','2021-06-10'],
+    'employeename':['john','anna','craig'],
+    'engagemantscore':[82,90,76],
+    'department':['marketing','finance','IT']
+}
+data
+df=pd.DataFrame(data)
+df
+df['datejoined']=pd.to_datetime(df['datejoined'])
+df
+df['years_at_company']=(pd.Timestamp('2023-01-01')-df['datejoined']).dt.days//365
+df
+plt.figure(figsize=(8,4))
+plt.bar(df['department'],df['engagemantscore'],color='skyblue')
+plt.xlabel('department')
+plt.ylabel ('engagementscore')
+plt.title ('engagement scores by department')
+plt.show()
